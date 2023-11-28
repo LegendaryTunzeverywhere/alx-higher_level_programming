@@ -7,7 +7,7 @@
  * Description: checks if singly linked list is a cycle or not.
  * Returb: 0 if no cycle, 1 if there is a cycle.
  */
-int check_cycle(listint_ *list)
+int check_cycle(listint_t *list)
 {
 	listint_t *f = list;
 	listint_t *s = list;
