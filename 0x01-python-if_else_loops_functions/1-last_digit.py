@@ -11,7 +11,7 @@ last_digit = number % 10
 if ld == 1:
     number *= -1
     ld *= -1
-print("Last of", number, "is", last_digit, end=" ")
+print("Last digit of", number, "is", last_digit, end=" ")
 
 if last_digit > 5:
     print("and is greater than 5")
