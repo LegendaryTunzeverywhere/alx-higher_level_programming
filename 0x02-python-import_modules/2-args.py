@@ -8,7 +8,7 @@ def print_arg(argv):
         if size == 1:
             print("{:d} argument:".format(size))
         else:
-            print("{:d} argument:".format(size))
+            print("{:d} arguments:".format(size))
         a = 1
         while a <= size:
             print("{:d}: {:s}".format(a, argv[a]))
