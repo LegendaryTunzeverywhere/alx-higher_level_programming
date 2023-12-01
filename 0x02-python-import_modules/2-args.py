@@ -2,7 +2,7 @@
 def print_arg(argv):
     size = len(argv) - 1
     if size == 0:
-        print("{:d} argument.".format(size))
+        print("{:d} arguments.".format(size))
         return
     else:
         if size == 1:
