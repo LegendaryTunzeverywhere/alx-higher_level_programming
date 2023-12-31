@@ -1,84 +1,61 @@
 #!/usr/bin/python3
-"""
-Module goes here
-"""
+"""Module for another elaborated class Square"""
 
 
 class Square:
-
+    """class Square with private attributes size and position"""
     def __init__(self, size=0, position=(0, 0)):
-        """
-        Initializes square
-
-        Attributes:
-            size (int): defaults to 0 if none; don't use __size to call setter
-            position (int): tuple of two positive integers
-        """
-        self.size = size
-        self.position = position
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):
-        """"
-        Getter
-
-        Return: size
-        """
+        """module to get value of size"""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """
-        Setter
-
-        Args:
-            value: sets size to value if int and >= 0
-        """
-        if type(value) is not int:
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+        """Module to set value of size"""
+        if isinstance(value, int):
+            if value < 0:
+                raise ValueError("size must be >= 0")
+            else:
+                self.__size = value
+        elif not isinstance(value, int):
+                raise TypeError("size must be an integer")
 
     @property
     def position(self):
-        """"
-        Getter
-
-        Return: position
-        """
+        """Module to get values for position"""
         return self.__position
 
     @position.setter
     def position(self, value):
-        """
-        Setter
-
-        Args:
-            value: sets position to tuple if value is tuple of 2 positive ints
-        """
-        if type(value) is not tuple or len(value) != 2 or \
-           type(value[0]) is not int or type(value[1]) is not int or \
-           value[0] < 0 or value[1] < 0:
+        """Module to set values for position"""
+        if not isinstance(value, tuple) and value < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif not isinstance(value[0], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif not isinstance(value[1], int):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
 
     def area(self):
-        """
-        Calculates area of square
-
-        Returns:
-            area
-        """
-        return (self.__size)**2
+        """Public instance method to determine area"""
+        return int(self.__size) * int(self.__size)
 
     def my_print(self):
+        """Public instance method to print pattern of area square"""
         if self.__size == 0:
-            print("")
+            print()
         else:
-            print("\n" * self.__position[1], end="")
-            print("\n".join([" " * self.__position[0] +
-                             "#" * self.__size
-                             for rows in range(self.__size)]))
+            if self.__position:
+                for i in range(self.__position[1]):
+                    print()
+                for i in range(int(self.__size)):
+                    for i in range(self.__position[0]):
+                            print(" ", end="")
+                    for i in range(int(self.__size)):
+                        print("#", end="")
+                    print()
