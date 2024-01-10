@@ -3,8 +3,14 @@
 
 
 def pascal_triangle(n):
-    """function to return a list of ints repr triangle"""
-    py_list = []
-
     if n <= 0:
-        return ""
+        return []
+    if n == 1:
+        return [[1]]
+
+    tri = [[1]]
+    for rows in range(n-1):
+        tri.append([a+b for a, b
+                         in zip([0] + tri[-1], tri[-1] + [0])])
+    return tri
+
